@@ -1,14 +1,14 @@
 import "./App.css";
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import {
   getAuth,
   RecaptchaVerifier,
   signInWithPhoneNumber,
 } from "firebase/auth";
-import { async } from "@firebase/util";
 
 export const Login = () => {
+  const navigate = useNavigate();
   const [value, setValue] = useState("");
   const [isSubmit, setIsSubmit] = useState(false);
 
@@ -45,10 +45,9 @@ export const Login = () => {
     const code = value;
 
     await confirmationResult.current.confirm(code);
-    let navigate = useNavigate();
-    navigate('home')
-    console.log('this');
-    alert('logged in');
+    navigate("home");
+    console.log("this");
+    alert("logged in");
   };
 
   return (
